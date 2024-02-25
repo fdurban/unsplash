@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'regular';
+    src: url('../public/Be_Vietnam_Pro/BeVietnamPro-SemiBold.ttf') format('truetype');
+    /* Puedes agregar otros formatos de fuente aquí si es necesario */
+  }
+@font-face {
+    font-family: 'thin';
+    src: url('../public/Be_Vietnam_Pro/BeVietnamPro-Thin.ttf') format('truetype');
+    /* Puedes agregar otros formatos de fuente aquí si es necesario */
+  }
+  
