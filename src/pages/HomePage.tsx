@@ -1,4 +1,12 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 const HomePage = () => {
+  const navigate = useNavigate()
+  const [searchQuery, setSearchQuery] = useState("");
+
+
   return (
     <>
       <div className="flex justify-between my-6 space-x-0 mx-5 md:max-h-full">
@@ -12,7 +20,9 @@ const HomePage = () => {
             className="border-2 h-auto py-4 border-gray-500 px-2 focus:outline-none rounded-md"
             type="text"
             placeholder="Enter your keywords..."
+            onChange={(e) => {setSearchQuery(e.target.value)}}
           />
+          <button onClick={() => navigate(`${searchQuery}`)}>search</button>
         </div>
         <img src="/assets/hero-right.png" alt="" />
       </div>

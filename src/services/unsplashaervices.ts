@@ -1,25 +1,18 @@
-import axios from "axios";
-
 class UnsplashHandler {
   baseURL: string;
   constructor() {
-    this.baseURL = "https://api.unsplash.com/search/photos";
+    this.baseURL = "https://api.unsplash.com/";
   }
 
   async searchOnUnsplash(searchItem: string) {
-    const client_id = "yBqSXnlnFm-ygmSjxFP9FXwU-XUIldRmmfPhTOcBbhE";
-    const params = {
-      client_id: client_id,
-      search: searchItem,
-    };
-    const response = await axios.get(this.baseURL, {
-      params: {
-        ...params,
-        origin: "*",
-      },
-    });
-    return response.data;
+    const client_id = import.meta.env.VITE_ACCESS_KEY;
+
+    const response = await fetch(
+      `https://api.unsplash.com/search/photos?page=1&query=${searchItem}&client_id=${client_id}`
+    );
+    return response.json();
   }
 }
+const phothoHandler = new UnsplashHandler();
 
-export default UnsplashHandler;
+export default phothoHandler;
