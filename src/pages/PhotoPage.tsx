@@ -1,61 +1,76 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import photoHandler from '../services/unsplashaervices'; // Make sure to correct the import path
+import { useParams, useNavigate } from 'react-router-dom';
+import photoHandler from '../services/unsplash.services';
+
+interface UnsplashResult {
+  id: string;
+  urls: {
+    regular: string;
+  };
+}
+
+interface UnsplashResponse {
+  results: UnsplashResult[];
+}
 
 const PhotoPage: React.FC = () => {
-  // Destructuring the `query` from the `useParams` hook
-  const { query } = useParams<{ query: string }>();
+  const { query: urlQuery } = useParams<{ query: string }>();
+  const navigate = useNavigate();
 
-  // State to manage the search query and array of image URLs
-  const [searchQuery, setSearchQuery] = useState<string>(query)
-  const [imageURLs, setImageURLs] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [foundData, setFoundData] = useState<UnsplashResponse>({ results: [] });
 
-  // Function to handle the search and set the array of image URLs
   const handleSearch = async (query: string): Promise<void> => {
-
     try {
-      const foundData = await photoHandler.searchOnUnsplash(query);
-      // Map through the results and extract the regular image URLs
-      const urls = foundData.results.map(result => result.urls.regular);
-      setImageURLs(urls);
+      const data = await photoHandler.searchOnUnsplash(query);
+      setFoundData(data);
+      navigate(`/query/${query}`);
     } catch (error) {
       console.error('Error fetching data:', error);
-      setImageURLs([]); // Set an empty array in case of an error
+      setFoundData({ results: [] });
     }
   };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    console.log(e)
     await handleSearch(searchQuery);
   };
 
+  const handleRedirect = async (photoId: string): Promise<void> => {
+    try {
+      navigate(`/photoid/${photoId}`);
+    } catch (error) {
+      console.error('Error redirecting:', error);
+    }
+  };
 
   useEffect(() => {
-    if (query) {
-      handleSearch(query);
+    if (urlQuery) {
+      handleSearch(urlQuery);
     }
-  }, [query]);
+  }, [ urlQuery]);
+
   return (
-    <> 
-      {/* Input to allow users to change the search query */}
+    <>
       <form onSubmit={handleSubmit}>
-      <input onChange={(e)=> setSearchQuery(e.target.value)}  placeholder='Enter a value'/>
-      <button>Search</button>
+        <input onChange={(e) => setSearchQuery(e.target.value)} placeholder='Enter a value' />
+        <button>Search</button>
       </form>
-      
-      {/* Displaying all images based on the current search query */}
+
       <div className='flex flex-wrap my-12 mx-36'>
-        {imageURLs.map((url, index) => (
+        {foundData.results.map((result, index) => (
           <img
             key={index}
-            src={url}
+            src={result.urls.regular}
             alt={`Image ${index}`}
             className="w-full max-w-xs m-2 object-fill"
+            onClick={() => handleRedirect(result.id)}
           />
         ))}
-        </div>
+      </div>
     </>
   );
 };
 
 export default PhotoPage;
+

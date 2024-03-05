@@ -22,7 +22,7 @@ const HomePage = () => {
             placeholder="Enter your keywords..."
             onChange={(e) => {setSearchQuery(e.target.value)}}
           />
-          <button onClick={() => navigate(`${searchQuery}`)}>search</button>
+          <button onClick={() => navigate(`/query/${searchQuery}`)}>search</button>
         </div>
         <img src="/assets/hero-right.png" alt="" />
       </div>
