@@ -22,7 +22,7 @@ const HandleCallback: React.FC = () => {
       exchangeCode(code1);
     }
 
-  }, []);
+  }, [code1]);
 
   return <div>Wait a sec srrrr</div>;
 };

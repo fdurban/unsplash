@@ -12,8 +12,8 @@ const UnsplashLogin = () => {
   const unsplashAuthURI = `${authorizationEndpoint}?${queryParams.toString()}`;
   return (
     <div>
-      <h1>Unsplash Login</h1>
-      <a href={unsplashAuthURI}>Heeeeyyyy</a>
+      <h1>To continue with </h1>
+      <a href={unsplashAuthURI}>Login with Unsplash</a>
     </div>
   );
 };

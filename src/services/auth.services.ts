@@ -10,6 +10,7 @@ class AuthService {
   constructor() {
     // Load token from localStorage during AuthService initialization
     this.token = localStorage.getItem("accessToken") || null;
+    this.username = localStorage.getItem("username") || null;
   }
 
   public async exchangeCodeForToken(code: string): Promise<string> {
@@ -25,7 +26,7 @@ class AuthService {
       });
 
       this.setToken(tokenResponse.data.access_token);
-      this.setUsername();
+      this.setUsername(tokenResponse.data.username);
       localStorage.setItem("authToken", tokenResponse.data.access_token);
       localStorage.setItem("username", tokenResponse.data.username);
       const accessData = tokenResponse.data;
@@ -39,9 +40,8 @@ class AuthService {
   private setToken(token: string): void {
     this.token = token;
   }
-  private setUsername(): void {
-    this.username = localStorage.getItem("username");
-    console.log(localStorage);
+  private setUsername(username: string): void {
+    this.username = username;
   }
 
   public getUsername(): string | null {
@@ -59,10 +59,6 @@ class AuthService {
     }
 
     return {};
-  }
-
-  private getToken(): string | null {
-    return this.token;
   }
 }
 

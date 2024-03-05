@@ -10,6 +10,7 @@ const CollectionsPage = () => {
     const fetchCollections = async () => {
       try {
         const response = await photoHandler.getUserCollections();
+        console.log(response)
         setCollections(response);
       } catch (error) {
         console.error("Error fetching collections:", error);
@@ -28,7 +29,6 @@ const CollectionsPage = () => {
           <li key={collection.id}>
             <h3>{collection.title}</h3>
             <p>{collection.description}</p>
-            {/* Add more details or styling as needed */}
           </li>
         ))}
       </ul>
