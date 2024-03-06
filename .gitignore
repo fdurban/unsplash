@@ -19,12 +19,12 @@ dist-ssr
 *.local
 
 # Configuration files
-.eslintrc.cjs
-.postcssrc.js
-tailwind.config.js
-tsconfig.json
-tsconfig.node.json
-vite.config.ts
+# .eslintrc.cjs
+# .postcssrc.js
+# tailwind.config.js
+# tsconfig.json
+# tsconfig.node.json
+# vite.config.ts
 
 # Editor directories and files
 .vscode/*
