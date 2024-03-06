@@ -7,10 +7,24 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node.js
+node_modules/
+
+# Environment variables
+.env
+
 node_modules
 dist
 dist-ssr
 *.local
+
+# Configuration files
+.eslintrc.cjs
+.postcssrc.js
+tailwind.config.js
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
 
 # Editor directories and files
 .vscode/*
