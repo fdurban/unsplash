@@ -8,7 +8,6 @@ class AuthService {
   private username: string | null = null;
 
   constructor() {
-    // Load token from localStorage during AuthService initialization
     this.token = localStorage.getItem("accessToken") || null;
     this.username = localStorage.getItem("username") || null;
   }
@@ -25,10 +24,10 @@ class AuthService {
         grant_type: "authorization_code",
       });
 
-      this.setToken(tokenResponse.data.access_token);
-      this.setUsername(tokenResponse.data.username);
       localStorage.setItem("authToken", tokenResponse.data.access_token);
       localStorage.setItem("username", tokenResponse.data.username);
+      this.setToken(tokenResponse.data.access_token);
+      this.setUsername(tokenResponse.data.username);
       const accessData = tokenResponse.data;
       return accessData;
     } catch (error) {
@@ -47,18 +46,32 @@ class AuthService {
   public getUsername(): string | null {
     return this.username;
   }
+  public getToken(): string | null {
+    return this.token;
+  }
 
-  public getAuthorizationHeader(): { Authorization: string } | object {
+  public getAuthorizationHeader(): HeadersInit {
     const localStorageToken = localStorage.getItem("authToken");
 
     if (localStorageToken) {
-      // Set the token in the class state
       this.setToken(localStorageToken);
-
-      return { Authorization: `Bearer ${localStorageToken}` };
+      const token = localStorageToken
+      const headers: HeadersInit = {
+        Authorization: `Bearer ${token}`,
+        // other headers if needed
+      };
+      return headers
     }
 
     return {};
+  }
+  public logout(): void {
+    this.token = null;
+    this.username = null;
+
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("username");
+    window.location.href = "/";
   }
 }
 

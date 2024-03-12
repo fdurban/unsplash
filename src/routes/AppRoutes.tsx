@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import HomePage from "../pages/HomePage"
 import PhotoPage from "../pages/PhotoPage"
 import { PhotoDetailPage } from "../pages/PhotoDetailPage"
-import HandleCallback from "../pages/HandleCallback"
+// import HandleCallback from "../pages/HandleCallback"
 import CollectionsPage from "../pages/CollectionsPage"
 
 const AppRoutes = () => {
@@ -11,7 +11,7 @@ const AppRoutes = () => {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/query/:query' element={<PhotoPage/>}/>
         <Route path='/photoid/:id' element={<PhotoDetailPage/>}/>
-        <Route path='/handle' element={<HandleCallback/>}/>
+        {/* <Route path='/handle' element={<HandleCallback/>}/> */}
         <Route path='/collections' element={<CollectionsPage/>}/>
         <Route path='/'/>
         <Route path='/'/>

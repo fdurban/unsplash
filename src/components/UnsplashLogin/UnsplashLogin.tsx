@@ -4,7 +4,7 @@ const UnsplashLogin = () => {
 
   const queryParams = new URLSearchParams({
     client_id:'yBqSXnlnFm-ygmSjxFP9FXwU-XUIldRmmfPhTOcBbhE',
-    redirect_uri:"http://localhost:5173/handle",
+    redirect_uri:"http://localhost:5173/collections",
     response_type:"code",
     scope: 'public read_collections write_collections'
   })

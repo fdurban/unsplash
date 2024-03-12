@@ -1,4 +1,5 @@
 import authHandler from "./auth.services";
+import axios from "axios";
 
 class UnsplashHandler {
   private baseURL = "https://api.unsplash.com/";
@@ -19,7 +20,6 @@ class UnsplashHandler {
   }
   public async getUserCollections() {
     const username = authHandler.getUsername();
-    console.log("username", username);
     const response = await fetch(
       `${this.baseURL}users/${username}/collections`,
       {
@@ -27,6 +27,25 @@ class UnsplashHandler {
       }
     );
     return response.json();
+  }
+
+  public async addPhotoToCollection(photoId: string, collectionId: string) {
+    try {
+      const headers = authHandler.getAuthorizationHeader();
+      
+      const url = `${this.baseURL}collections/${collectionId}/add`;
+
+      const data = {
+        photo_id: photoId,
+      };
+
+      const addedPhoto = await axios.post(url, data, { headers });
+
+      return addedPhoto.data;
+    } catch (error) {
+      console.error("Error adding photo to collection:", error);
+      throw error;
+    }
   }
 }
 const photoHandler = new UnsplashHandler();
