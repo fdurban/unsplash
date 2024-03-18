@@ -1,4 +1,3 @@
-
 const UnsplashLogin = () => {
   const authorizationEndpoint = 'https://unsplash.com/oauth/authorize';
 
@@ -11,9 +10,9 @@ const UnsplashLogin = () => {
 
   const unsplashAuthURI = `${authorizationEndpoint}?${queryParams.toString()}`;
   return (
-    <div>
-      <h1>To continue with </h1>
-      <a href={unsplashAuthURI}>Login with Unsplash</a>
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="mb-4 mt-10 text-center">To see your collections you must login with your Unsplash account.</h1>
+      <a href={unsplashAuthURI} className="bg-gradient-to-r from-yellow-200 to-pink-900 inline-block text-transparent bg-clip-text">Login with Unsplash</a>
     </div>
   );
 };

@@ -1,32 +1,47 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import searchIcon from '../../public/assets/Search.svg'
 
 const HomePage = () => {
-  const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate()
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const handleSearch = () => {
+    if (searchQuery.trim() !== '') {
+      navigate(`/query/${searchQuery}`)
+    }
+  }
 
   return (
-    <>
-      <div className="flex my-6 mx-5">
-        <img className='h-3/6' src="/assets/hero-left.png" alt="" />
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <h1 className="font-regular text-4xl">Search</h1>
-          <p className="font-thin">
-            Search high resolution images from Unsplash
-          </p>
+    <div className="flex flex-col sm:flex-row justify-center items-center h-screen">
+      <img className='hidden sm:block w-auto' src="/assets/hero-left.png" alt="" />
+      <div className="flex flex-col items-center justify-center space-y-4 sm:w-1/2 relative mx-4">
+        <h1 className="font-regular text-4xl">Search</h1>
+        <p className="font-thin">
+          Search high resolution images from Unsplash
+        </p>
+        <div className="relative flex items-center w-full rounded-md border-2 pl-2">
           <input
-            className="border-2 h-auto py-4 border-gray-500 px-2 focus:outline-none rounded-md"
+            className=" h-auto py-4  focus:outline-none"
             type="text"
             placeholder="Enter your keywords..."
+            value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button onClick={() => navigate(`/query/${searchQuery}`)}>Search</button>
+          <button onClick={handleSearch} className="absolute right-0 h-full p-2">
+            <img src={searchIcon} alt="Search" className="h-6 w-6" />
+          </button>
         </div>
-        <img className='h-4/6' src="/assets/hero-right.png" alt="" />
       </div>
-    </>
-  );
-};
+      <img className='hidden sm:block w-auto' src="/assets/hero-right.png" alt="" />
+    </div>
+  )
+}
 
-export default HomePage;
+export default HomePage
+
+
+
+
+
 

@@ -4,7 +4,7 @@ class AuthService {
   private baseURL = "https://unsplash.com/";
   private unsplashClientId = import.meta.env.VITE_ACCESS_KEY;
   private unsplashClientSecret = import.meta.env.VITE_CLIENT_SECRET;
-  private token: string | null = null;
+  public token: string | null = null;
   private username: string | null = null;
 
   constructor() {
@@ -46,9 +46,6 @@ class AuthService {
   public getUsername(): string | null {
     return this.username;
   }
-  public getToken(): string | null {
-    return this.token;
-  }
 
   public getAuthorizationHeader(): HeadersInit {
     const localStorageToken = localStorage.getItem("authToken");
@@ -58,7 +55,6 @@ class AuthService {
       const token = localStorageToken
       const headers: HeadersInit = {
         Authorization: `Bearer ${token}`,
-        // other headers if needed
       };
       return headers
     }
@@ -77,3 +73,4 @@ class AuthService {
 
 const authHandler = new AuthService();
 export default authHandler;
+
