@@ -61,7 +61,7 @@ const PhotoPage: React.FC = () => {
 	return (
 		<>
 			<img
-				src='../../public/assets/gradiend-bg.svg'
+				src='/assets/gradiend-bg.svg'
 				alt='bg-different-colors'
 				className='w-screen'
 			/>
@@ -76,11 +76,7 @@ const PhotoPage: React.FC = () => {
 						className=' ml-4 border-none focus:outline-none'
 					/>
 					<button className='pt-4'>
-						<img
-							src='../../public/assets/Search.svg'
-							alt=''
-							className='pb-4 lg:pr-4'
-						/>
+						<img src='/assets/Search.svg' alt='' className='pb-4 lg:pr-4' />
 					</button>
 				</form>
 			</div>

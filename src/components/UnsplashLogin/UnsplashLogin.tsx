@@ -3,9 +3,9 @@ const UnsplashLogin = () => {
 
 	const queryParams = new URLSearchParams({
 		client_id: import.meta.env.VITE_ACCESS_KEY,
-		redirect_uri: 'http://localhost:5173/collections',
-		response_type: 'code',
-		scope: 'public read_collections write_collections',
+		redirect_uri: import.meta.env.VITE_REDIRECT_URI,
+		response_type: import.meta.env.VITE_RESPONSE_TYPE,
+		scope: import.meta.env.VITE_SCOPE,
 	})
 
 	const unsplashAuthURI = `${authorizationEndpoint}?${queryParams.toString()}`
