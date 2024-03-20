@@ -52,11 +52,11 @@ const CollectionsPage: React.FC = () => {
 		<>
 			{localStorage.authToken ? (
 				<>
-					<div className='flex flex-col mt-5 items-center justify-center'>
-						<h1 className='font-semibold text-5xl mt-6 bg-gradient-to-r from-yellow-200 to-pink-900 inline-block text-transparent bg-clip-text'>
+					<div className='mt-5 flex flex-col items-center justify-center'>
+						<h1 className='mt-6 inline-block bg-gradient-to-r from-yellow-200 to-pink-900 bg-clip-text text-5xl font-semibold text-transparent'>
 							Collections
 						</h1>
-						<p className='mt-3 text-center w-96 px-2'>
+						<p className='mt-3 w-96 px-2 text-center'>
 							Explore the world through collections of beautiful photos free to
 							use under the Unsplash License.
 						</p>
@@ -64,7 +64,7 @@ const CollectionsPage: React.FC = () => {
 							{collections.map(collection => (
 								<li key={collection.id} className='flex flex-col'>
 									<div
-										className='flex space-x-1 mx-6 mt-12'
+										className='mx-6 mt-12 flex space-x-1'
 										onClick={() => {
 											navigate(`/collection/${collection.id}`)
 										}}

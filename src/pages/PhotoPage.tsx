@@ -59,28 +59,28 @@ const PhotoPage: React.FC = () => {
 				alt='bg-different-colors'
 				className='w-screen'
 			/>
-			<div className='absolute top-2 left-0 right-0 flex justify-center'>
+			<div className='absolute left-0 right-0 top-2 flex justify-center'>
 				<form
 					onSubmit={handleSubmit}
-					className='bg-white shadow-lg rounded-lg flex items-center'
+					className='flex items-center rounded-lg bg-white shadow-lg'
 				>
 					<input
 						onChange={e => setSearchQuery(e.target.value)}
 						placeholder='Search beautiful images'
-						className=' border-none focus:outline-none ml-4'
+						className=' ml-4 border-none focus:outline-none'
 					/>
 					<button className='pt-4'>
 						<img src='../../public/assets/Search.svg' alt='' className='pb-4' />
 					</button>
 				</form>
 			</div>
-			<div className='flex flex-wrap justify-center my-12 px-36'>
+			<div className='my-12 flex flex-wrap justify-center px-36'>
 				{foundData.results.map((result, index) => (
 					<img
 						key={index}
 						src={result.urls.regular}
 						alt={`Image ${index}`}
-						className='max-w-xs m-2 object-fill rounded'
+						className='m-2 max-w-xs rounded object-fill'
 						onClick={() => handleRedirect(result.id)}
 					/>
 				))}
