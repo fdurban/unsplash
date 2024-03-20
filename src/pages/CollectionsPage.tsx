@@ -100,7 +100,14 @@ const CollectionsPage: React.FC = () => {
 							))}
 						</ul>
 					</div>
-					<button onClick={handleLogout}>Logout</button>
+					<div className='mt-12 flex items-center justify-center'>
+						<button
+							onClick={handleLogout}
+							className='flex items-center justify-center'
+						>
+							Logout
+						</button>
+					</div>
 				</>
 			) : (
 				<UnsplashLogin />

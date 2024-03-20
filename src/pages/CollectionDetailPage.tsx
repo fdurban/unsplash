@@ -53,7 +53,7 @@ const CollectionDetailPage: React.FC = () => {
 						key={index}
 						src={photo.urls.raw}
 						alt=''
-						className='m-2 max-w-xs rounded-md object-fill'
+						className='m-2 max-w-xs rounded-md object-cover'
 					/>
 				))}
 			</div>
