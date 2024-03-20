@@ -11,6 +11,11 @@ const HomePage = () => {
 			navigate(`/query/${searchQuery}`)
 		}
 	}
+	const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+		if (event.key === 'Enter') {
+			handleSearch()
+		}
+	}
 
 	return (
 		<div className='flex h-screen py-8'>
@@ -31,6 +36,7 @@ const HomePage = () => {
 						placeholder='Enter your keywords...'
 						value={searchQuery}
 						onChange={e => setSearchQuery(e.target.value)}
+						onKeyDown={handleKeyDown}
 					/>
 					<button
 						onClick={handleSearch}

@@ -60,9 +60,9 @@ const CollectionsPage: React.FC = () => {
 							Explore the world through collections of beautiful photos free to
 							use under the Unsplash License.
 						</p>
-						<ul className='flex flex-col'>
+						<ul className='flex flex-wrap justify-center'>
 							{collections.map(collection => (
-								<li key={collection.id} className='flex flex-col'>
+								<li key={collection.id} className='flex flex-col items-center'>
 									<div
 										className='mx-6 mt-12 flex space-x-1'
 										onClick={() => {

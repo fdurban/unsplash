@@ -53,13 +53,13 @@ const PhotoPage: React.FC = () => {
 	}, [urlQuery])
 
 	return (
-		<div className='relative'>
+		<div className=''>
 			<img
 				src='../../public/assets/gradiend-bg.svg'
 				alt='bg-different-colors'
 				className='w-screen'
 			/>
-			<div className='absolute left-0 right-0 top-2 flex justify-center'>
+			<div className='left-0 right-0 mt-[-30px] flex justify-center'>
 				<form
 					onSubmit={handleSubmit}
 					className='flex items-center rounded-lg bg-white shadow-lg'
