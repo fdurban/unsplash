@@ -5,7 +5,7 @@ const UnsplashLogin = () => {
 		client_id: import.meta.env.VITE_ACCESS_KEY,
 		redirect_uri: import.meta.env.VITE_REDIRECT_URI,
 		response_type: import.meta.env.VITE_RESPONSE_TYPE,
-		scope: 'public read_collections write_collections',
+		scope: import.meta.env.VITE_SCOPE,
 	})
 
 	const unsplashAuthURI = `${authorizationEndpoint}?${queryParams.toString()}`
