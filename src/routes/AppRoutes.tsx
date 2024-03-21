@@ -12,7 +12,6 @@ const AppRoutes = () => {
 			<Route path='/query/:query' element={<PhotoPage />} />
 			<Route path='/photoid/:id' element={<PhotoDetailPage />} />
 			<Route path='/collections' element={<CollectionsPage />} />
-			<Route path='/collections?code=' element={<CollectionsPage />} />
 			<Route path='/collection/:id' element={<CollectionDetailPage />} />
 			<Route path='/' />
 			<Route path='*' element={'404'} />
